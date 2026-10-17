@@ -320,6 +320,10 @@ sup { font-size: .6em; line-height: 0; vertical-align: .45em; }
   .rc-copy { width: 90cqw; bottom: 58px; padding-block: 1cqh 1.1cqh; }
   .rc-copy .ev-venue + .ev-where { font-size: 12.5px; }
 }
+/* short phones: the Haldi card drops between the two round buttons, so the couple's laps stay clear */
+@container (max-height: 700px) {
+  .hd-copy { bottom: 12px; width: calc(100cqw - 124px); padding-inline: 1.5cqw; }
+}
 
 /* Haldi painting: fitted to the stage width rather than cropped to cover, so
    tall phones see the whole width at less enlargement. A tiny blurred copy
