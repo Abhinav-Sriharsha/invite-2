@@ -301,7 +301,7 @@
     const STOPS = [[150, 3], [330, 4], [520, 4.5], [745, 4.5], [905, 5.5, 1.2], [1110, 5], [1310, 5], [1475, 4.5], [1655, 6.5]];
     const GLIDE = 1.37; // seconds per screen between scenes
     const READING = 76; // px per second through the information
-    const WISHES_OUT = 1.15; // speed from the best wishes until the celebrations fill the screen
+    const WISHES_OUT = 1.495; // speed from the best wishes until the celebrations fill the screen
     const info = $('.info');
     const infoTop = () => info.getBoundingClientRect().top + scrollY;
     let tween = null;
