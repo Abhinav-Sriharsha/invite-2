@@ -22,7 +22,7 @@ build step: open `index.html` through any static server (for example
 
 **Auto-scroll.** The doors say "Tap to start". That tap starts the music and
 plays the story: it glides to each scene once its text has settled, holds it
-for about 2–4 seconds (`HOLD` scales every pause), then drifts through the celebrations and RSVP at reading
+for 1.9 seconds (`HOLD`), then drifts through the celebrations and RSVP at reading
 pace (about a minute for the story). Phones set to reduce motion, including
 many Android phones in battery saver, get the static page. There the first
 scene says "Tap to start", and the auto-scroll moves from scene to scene the

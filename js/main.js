@@ -300,20 +300,19 @@
     const btn = $('.autoplay');
     if (!btn) return () => {};
     const PACE = 1.15; // overall speed of the glides and the reading scroll
-    const HOLD = 0.6; // scales every hold below (how long a scene stays once its text is in)
-    // [timeline unit where the scene has settled, seconds to hold it, speed of the glide into it]
-    const STORY = [[150, 3], [330, 4], [520, 4.5], [745, 4.5], [905, 5.5, 1.2], [1110, 5], [1310, 5], [1475, 4.5], [1655, 6.5]];
+    const HOLD = 1.9; // seconds each scene stays once its text is in
+    // [timeline unit where the scene has settled, speed of the glide into it]
+    const STORY = [[150], [330], [520], [745], [905, 1.2], [1110], [1310], [1475], [1655]];
     const GLIDE = 1.37 / PACE; // seconds per screen between scenes
     const READING = 76 * PACE; // px per second through the information
     const WISHES_OUT = 1.495; // speed from the best wishes until the celebrations fill the screen
-    const STATIC_HOLD = 4.5; // seconds on each scene of the static page
     const info = $('.info');
     const pageY = (el) => el.getBoundingClientRect().top + scrollY;
     const yOf = (u) => ch.offsetTop + (u * (ch.offsetHeight - innerHeight)) / trackLength(ch);
     const end = () => root.scrollHeight - innerHeight;
     const stops = () => (motion
-      ? STORY.map(([u, hold, speed = 1]) => ({ y: yOf(u), hold, speed }))
-      : $$('.scene', ch).map((el) => ({ y: Math.min(pageY(el), end()), hold: STATIC_HOLD, speed: 1 })));
+      ? STORY.map(([u, speed = 1]) => ({ y: yOf(u), speed }))
+      : $$('.scene', ch).map((el) => ({ y: Math.min(pageY(el), end()), speed: 1 })));
     const atStart = () => scrollY < (motion ? yOf(10) : 40);
 
     let tween = null;
@@ -357,7 +356,7 @@
       const toInfo = Math.min(pageY(info), end());
       if (next) {
         const screens = (next.y - scrollY) / innerHeight;
-        glide(next.y, Math.max(1.9 / PACE, screens * GLIDE) / next.speed, 'sine.inOut', () => { timer = setTimeout(step, next.hold * HOLD * 1000); });
+        glide(next.y, Math.max(1.9 / PACE, screens * GLIDE) / next.speed, 'sine.inOut', () => { timer = setTimeout(step, HOLD * 1000); });
       } else if (scrollY < toInfo - 2) {
         glide(toInfo, (toInfo - scrollY) / (READING * WISHES_OUT), 'none', step);
       } else if (scrollY < end() - 2) {
