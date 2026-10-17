@@ -420,7 +420,7 @@ sup { font-size: .6em; line-height: 0; vertical-align: .45em; }
 }
 /* Bottom half: names. The static page shows the full names straight away. */
 .s3-copy {
-  top: 64%;
+  top: 62%;
   z-index: 1;
   padding-inline: 7cqw;
 }
@@ -455,10 +455,10 @@ sup { font-size: .6em; line-height: 0; vertical-align: .45em; }
 }
 /* short screens: lift the names so both parents' lines clear the bottom */
 @container (max-height: 700px) {
-  .s3-copy { top: 58%; }
+  .s3-copy { top: 56%; }
 }
 @container (max-height: 600px) {
-  .s3-copy { top: 55.5%; }
+  .s3-copy { top: 53.5%; }
 }
 .cn__and { margin-block: .15em .05em; font-size: .78em; font-weight: 400; }
 .parents {
