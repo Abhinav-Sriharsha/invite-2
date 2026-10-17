@@ -300,6 +300,7 @@
     const btn = $('.autoplay');
     if (!btn) return () => {};
     const PACE = 1.15; // overall speed of the glides and the reading scroll
+    const HOLD = 0.6; // scales every hold below (how long a scene stays once its text is in)
     // [timeline unit where the scene has settled, seconds to hold it, speed of the glide into it]
     const STORY = [[150, 3], [330, 4], [520, 4.5], [745, 4.5], [905, 5.5, 1.2], [1110, 5], [1310, 5], [1475, 4.5], [1655, 6.5]];
     const GLIDE = 1.37 / PACE; // seconds per screen between scenes
@@ -356,7 +357,7 @@
       const toInfo = Math.min(pageY(info), end());
       if (next) {
         const screens = (next.y - scrollY) / innerHeight;
-        glide(next.y, Math.max(1.9 / PACE, screens * GLIDE) / next.speed, 'sine.inOut', () => { timer = setTimeout(step, next.hold * 1000); });
+        glide(next.y, Math.max(1.9 / PACE, screens * GLIDE) / next.speed, 'sine.inOut', () => { timer = setTimeout(step, next.hold * HOLD * 1000); });
       } else if (scrollY < toInfo - 2) {
         glide(toInfo, (toInfo - scrollY) / (READING * WISHES_OUT), 'none', step);
       } else if (scrollY < end() - 2) {
